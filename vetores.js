@@ -1,31 +1,65 @@
 /**
- * Uma bolinha vermelha movendo-se horizontalmente e rebatendo nas bordas. 
- * Usa a classe p5.Vector para representar posição e velocidade.
+ * Introdução aos Arrays em JavaScript com P5.js
+ * Exemplo prático de várias bolinhas rebatendo nas bordas do canvas.
+ * Cada bolinha possui uma posição e uma velocidade armazenadas em arrays.
  */
+
 new p5((sketch) => {
-    let pos, vel;
+    // Arrays para armazenar as posições e velocidades das bolinhas
+    let posicoes = [];
+    let velocidades = [];
+    let numBolinhas = 5;  // Número de bolinhas no exemplo
 
     sketch.setup = () => {
         sketch.createCanvas(400, 200).parent('vetores');
-        pos = sketch.createVector(50, 100);
-        vel = sketch.createVector(2.5, 0);
+
+        // Inicializa posições e velocidades usando arrays
+        for (let i = 0; i < numBolinhas; i++) {
+            // Adiciona uma posição inicial aleatória ao array posicoes
+            posicoes.push(sketch.createVector(
+                sketch.random(30, sketch.width - 30),
+                sketch.random(30, sketch.height - 30)
+            ));
+
+            // Adiciona uma velocidade inicial aleatória ao array velocidades
+            velocidades.push(sketch.createVector(
+                sketch.random(1, 3),
+                sketch.random(1, 3)
+            ));
+        }
     };
 
     sketch.draw = () => {
         sketch.background(240);
-        
-        // Atualiza posição
-        pos.add(vel);
 
-        // Rebater na borda
-        if (pos.x > sketch.width || pos.x < 0) vel.x *= -1;
+        // Percorre todos os elementos do array usando um loop
+        for (let i = 0; i < numBolinhas; i++) {
+            
+            // Atualiza posição da bolinha somando o vetor velocidade
+            posicoes[i].add(velocidades[i]);
 
-        // Desenha círculo
-        sketch.fill(255, 0, 0);
-        sketch.ellipse(pos.x, pos.y, 30, 30);
+            // Verifica colisão horizontal com as bordas e inverte a direção se necessário
+            if (posicoes[i].x > sketch.width || posicoes[i].x < 0) {
+                velocidades[i].x *= -1;
+            }
 
-        // Exibe vetor
-        sketch.stroke(0);
-        sketch.line(pos.x, pos.y, pos.x + vel.x * 10, pos.y);
+            // Verifica colisão vertical com as bordas e inverte a direção se necessário
+            if (posicoes[i].y > sketch.height || posicoes[i].y < 0) {
+                velocidades[i].y *= -1;
+            }
+
+            // Desenha bolinhas
+            sketch.fill(255, 0, 0);
+            sketch.ellipse(posicoes[i].x, posicoes[i].y, 30, 30);
+
+            // Exibe vetor velocidade (representação gráfica simplificada)
+            sketch.stroke(0);
+            sketch.line(
+                posicoes[i].x,
+                posicoes[i].y,
+                posicoes[i].x + velocidades[i].x * 10,
+                posicoes[i].y + velocidades[i].y * 10
+            );
+        }
     };
 });

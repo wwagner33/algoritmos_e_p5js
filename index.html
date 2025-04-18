@@ -1,26 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Aplicações com p5.js</title>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
-</head>
-<body>
-    <h2>Uso de Vetores (p5.Vector)</h2>
-    <div id="vetores"></div>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+      h1, h2, h3 { color: #333; }
+      .section { margin-bottom: 40px; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+      .alert { background-color: #fffbcc; padding: 15px; border-left: 4px solid #ffc107; margin: 20px 0; }
+      code { background-color: #eef; padding: 2px 4px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <h1>Material Didático Interativo com P5.js</h1>
+    <p>
+      Bem-vindo ao material didático interativo sobre programação usando JavaScript e P5.js. Este conteúdo é especialmente criado para ensinar e demonstrar conceitos básicos e intermediários de programação por meio de exemplos visuais interativos. Você aprenderá sobre vetores, algoritmos de ordenação, buscas e cálculo de distâncias usando gráficos dinâmicos e interações em tempo real.
+    </p>
+    <h1>Explicação dos Conceitos e Implementações em P5.js</h1>
+    <p>
+      Este material apresenta conceitos fundamentais de programação utilizando
+      JavaScript e a biblioteca gráfica P5.js. Os exemplos abordam a criação de vetores, ordenação simples, busca linear e cálculo de menor distância entre pontos.
+    </p>
 
-    <h2>Ordenação Simples (Bubble Sort)</h2>
-    <div id="ordenacao"></div>
+    <div class="alert">
+      <h2>Importante</h2>
+      <p>
+        Para poder ver o código em seu navegador, utilize a ferramenta Inspecionar. No Chrome e Firefox, basta teclar <strong>F12</strong>.
+      </p>
+      <p>
+        Na aba <strong>Console</strong>, você verá o código JavaScript que está sendo executado. Você pode interagir com o código, alterando valores e vendo os resultados em tempo real.
+      </p>
+    </div>
 
-    <h2>Busca Simples (Linear Search)</h2>
-    <div id="busca"></div>
+    <div class="section">
+      <h2>Arrays e sua aplicação em Vetores para Computação Gráfica</h2>
+      <p>
+        Vetores são estruturas essenciais em programação para armazenar e manipular conjuntos de dados. No exemplo das bolinhas, usamos arrays para armazenar posições e velocidades. Cada bolinha tem sua posição e velocidade atualizadas continuamente, com colisões detectadas visualmente.
+      </p>
+      <p>
+        O código JavaScript utiliza <code>createVector</code> para criar vetores que representam posições e velocidades, e métodos como <code>.add()</code> para atualizar posições.
+      </p>
+      <div id="vetores"></div>
+    </div>
 
-    <h2>Algoritmo Força Bruta (Pontos mais próximos)</h2>
-    <div id="forca_bruta"></div>
+    <div class="section">
+      <h2>Ordenação Simples (Bubble Sort)</h2>
+      <p>
+        O algoritmo Bubble Sort organiza os elementos em ordem crescente ou decrescente comparando pares adjacentes e trocando-os se estiverem fora da ordem desejada. A visualização mostra claramente cada etapa de comparação e troca.
+      </p>
+      <p>
+        O código JavaScript usa arrays para armazenar os valores, visualizando-os como barras, destacando em vermelho os elementos atualmente comparados.
+      </p>
+      <div id="ordenacao"></div>
+    </div>
+
+    <div class="section">
+      <h2>Busca Linear Simples</h2>
+      <p>
+        A busca linear verifica cada elemento de uma lista sequencialmente até encontrar um valor específico ou atingir o fim da lista sem encontrá-lo.
+      </p>
+      <p>
+        O código JavaScript realiza a busca visualmente, destacando o elemento sendo analisado em tempo real, facilitando o entendimento do processo.
+      </p>
+      <div id="busca"></div>
+    </div>
+
+    <div class="section">
+      <h2>Cálculo da Menor Distância entre Pontos (Força Bruta)</h2>
+      <p>
+        Este algoritmo identifica o par de pontos mais próximo entre vários pontos, verificando todas as combinações possíveis (método força bruta).
+      </p>
+      <p>
+        O código JavaScript implementa esta verificação usando objetos do tipo <code>p5.Vector</code>, destacando visualmente com uma linha vermelha o par mais próximo encontrado.
+      </p>
+      <div id="distancia"></div>
+    </div>
 
     <script src="vetores.js"></script>
     <script src="ordenacao.js"></script>
     <script src="busca.js"></script>
-    <script src="forca_bruta.js"></script>
-</body>
+    <script src="distancia.js"></script>
+  </body>
 </html>
