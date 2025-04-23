@@ -4,14 +4,14 @@
  * Cada bolinha possui uma posição e uma velocidade armazenadas em arrays.
  */
 
-new p5((sketch) => {
-    // Arrays para armazenar as posições e velocidades das bolinhas
+new p5((sketch) => {  // Cria uma nova instância do p5.js
+     // Arrays para armazenar as posições e velocidades das bolinhas
     let posicoes = [];
     let velocidades = [];
     let numBolinhas = 5;  // Número de bolinhas no exemplo
 
     sketch.setup = () => {
-        sketch.createCanvas(400, 200).parent('vetores');
+        sketch.createCanvas(640, 480).parent('vetores');
 
         // Inicializa posições e velocidades usando arrays
         for (let i = 0; i < numBolinhas; i++) {
@@ -61,5 +61,24 @@ new p5((sketch) => {
                 posicoes[i].y + velocidades[i].y * 10
             );
         }
+        // Exibe os arrays de posições e velocidades no Console
+        // console.log(posicoes);
+        // console.log(velocidades);
+
+        // Exibe as posições e velocidades no console a cada 60 frames (~1 segundo)
+        // if (sketch.frameCount % 60 === 0) { // A cada 60 frames (~1 segundo)
+        //     for (let i = 0; i < numBolinhas; i++) {
+        //         console.log(`Bolinha ${i + 1}: Posição = (${posicoes[i].x.toFixed(2)}, ${posicoes[i].y.toFixed(2)}), Velocidade = (${velocidades[i].x.toFixed(2)}, ${velocidades[i].y.toFixed(2)})`);
+        //     }
+        // }
+        
+
+        // Exibe as posições e velocidades na tela
+        // sketch.fill(0);
+        // sketch.textSize(12);
+        // sketch.text('Posições: ' + posicoes.map(p => `(${p.x.toFixed(1)}, ${p.y.toFixed(1)})`).join(', '), 10, 20);
+        // sketch.text('Velocidades: ' + velocidades.map(v => `(${v.x.toFixed(1)}, ${v.y.toFixed(1)})`).join(', '), 10, 40);
+
+
     };
 });

@@ -197,7 +197,6 @@ Para visualizar a execução dos códigos, abra o arquivo `index.html` em seu na
 > Na aba **Console**, você verá o código JavaScript que está sendo executado.
 > Você pode interagir com o código, alterando valores e vendo os resultados em tempo real.
 
-
 ## Exercícios
 
 ### 1) Extensão de Vetores
