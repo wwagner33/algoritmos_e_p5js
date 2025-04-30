@@ -27,7 +27,7 @@ new p5((sketch) => {
     let resultado;
 
     sketch.setup = () => {
-        sketch.createCanvas(400, 200).parent('distancia');
+        sketch.createCanvas(600, 300).parent('distancia');
         pontos = Array.from({ length: 20 }, () => 
             sketch.createVector(sketch.random(sketch.width), sketch.random(sketch.height))
         );
