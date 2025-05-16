@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detectando colisão entre corpos usando Vector</title>
+  </head>
+  <body>
+    <div id="vetores"></div>
+    <script src="p5.js"></script>
+    <script>
+      new p5((sketch) => {
+        // 1) Declarando a subclasse dentro do sketch
+        class CollidableVector extends p5.Vector {
+          constructor(x, y, z = 0) {
+            super(x, y, z);
+          }
+
+          // método de colisão circular
+          collidesWith(other, r1, r2) {
+            return this.dist(other) < r1 + r2;
+          }
+
+          // reflexão em relação a uma normal unitária
+          reflect(normal) {
+            const dot = this.dot(normal);
+            // v_f = v_i - 2 * (v_i·n) * n
+            this.sub(p5.Vector.mult(normal, 2 * dot));
+            return this;
+          }
+        }
+
+        // 2) Variáveis do sketch
+        let pos, vel;
+        const RADIUS = 10;
+        // normal de parede vertical à esquerda/direita
+        const wallNormal = new p5.Vector(1, 0);
+
+        sketch.setup = () => {
+          // Cria um canvas e anexa ao elemento com id "vetores"
+          sketch.createCanvas(400, 400).parent("vetores");
+          // inicializa com nossa classe customizada
+          pos = new CollidableVector(100, 200);
+          vel = new CollidableVector(2.5, 1.8);
+        };
+
+        sketch.draw = () => {
+          sketch.background(220);
+
+          // move o ponto
+          pos.add(vel);
+
+          // detecta colisão simples com as paredes
+          if (pos.x - RADIUS < 0 || pos.x + RADIUS > sketch.width) {
+            vel.reflect(wallNormal);
+          }
+          if (pos.y - RADIUS < 0 || pos.y + RADIUS > sketch.height) {
+            // normal para topo/inferior: (0, 1)
+            vel.reflect(new p5.Vector(0, 1));
+          }
+
+          // desenha o “bola”
+          sketch.ellipse(pos.x, pos.y, RADIUS * 2);
+        };
+      });
+    </script>
+  </body>
+</html>

@@ -29,7 +29,7 @@ O repositório será copiado para seu computador. Acesse a pasta criada (`algori
 
 Vetores são estruturas essenciais em programação para armazenar e manipular conjuntos de dados. No exemplo das bolinhas, usamos arrays para armazenar posições e velocidades. Cada bolinha tem sua posição e velocidade atualizada continuamente, com colisões detectadas visualmente.
 
-**Exemplo Portugol:**
+**Exemplo de uso de um Array em Portugol:**
 
 ```portugol
 Para cada bolinha de 1 até N faça

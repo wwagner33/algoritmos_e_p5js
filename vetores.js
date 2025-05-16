@@ -49,7 +49,8 @@ new p5((sketch) => {  // Cria uma nova instância do p5.js
             }
 
             // Desenha bolinhas
-            sketch.fill(255, 0, 0);
+            <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
+            <script src="vetores.js"></script>sketch.fill(255, 0, 0);
             sketch.ellipse(posicoes[i].x, posicoes[i].y, 30, 30);
 
             // Exibe vetor velocidade (representação gráfica simplificada)

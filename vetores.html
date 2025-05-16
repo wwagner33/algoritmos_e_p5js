@@ -1,25 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="style.css">
-    <title>Usando Vetores e P5.js</title>
-</head>
-<body>
-    <div class="section">
-        <h2>Vetores e P5.js</h2>
-        <p>
-            Neste exemplo, utilizamos a biblioteca P5.js para criar uma visualização interativa de vetores. Através de vetores, podemos representar posições e velocidades de objetos em um espaço bidimensional.
-        </p>
-        <p>
-            O código JavaScript utiliza a função <code>createVector()</code> para criar vetores que representam posições e velocidades, e métodos como <code>.add()</code> para atualizar as posições.
-        </p>
-        <div id="vetores"></div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.3/lib/p5.min.js"></script>
-    <script src="vetores.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="vetores"></div>
+    <!-- Trechos relevantes do index.html gerado pelo editor p5.js -->
+    <script src="p5.js"></script>
+    <!-- Código JavaScript do sketch p5.js -->
+    <script>
+      new p5((sketch) => {
+        sketch.particle = null;
+
+        sketch.setup = () => {
+          // Cria um canvas e anexa ao elemento com id "vetores"
+          sketch.createCanvas(400, 400).parent("vetores");
+
+          // Cria a partícula com vetores inicializados corretamente
+          sketch.particle = {
+            pos: sketch.createVector(sketch.width / 2, sketch.height / 2),
+            vel: sketch.createVector(
+              sketch.random(-2, 2),
+              sketch.random(-2, 2)
+            ),
+            acc: sketch.createVector(0, 0.1),
+          };
+        };
+
+        sketch.draw = () => {
+          sketch.background(205);
+
+          // Atualiza os vetores corretamente
+          sketch.particle.vel.add(sketch.particle.acc);
+          sketch.particle.pos.add(sketch.particle.vel);
+
+          // Desenha a partícula no canvas
+          sketch.ellipse(sketch.particle.pos.x, sketch.particle.pos.y, 20, 20);
+        };
+        // sketch.mousePressed = () => {
+        //   // Reseta a partícula ao clicar
+        //   sketch.particle.pos.set(sketch.width / 2, sketch.height / 2);
+        //   sketch.particle.vel.set(sketch.random(-2, 2), sketch.random(-2, 2));
+        //   sketch.particle.acc.set(0, 0.1);
+        // };
+
+        // class CollidableVector extends p5.Vector {
+        //   constructor(x, y) {
+        //     super(x, y);
+        //   }
+
+        //   // Checa colisão circular
+        //   collidesWith(other, r1, r2) {
+        //     return this.dist(other) < r1 + r2;
+        //   }
+
+        //   // Reflete o vetor seguindo a normal unitária
+        //   reflect(normal) {
+        //     const dot = this.dot(normal);
+        //     this.sub(p5.Vector.mult(normal, 2 * dot));
+        //     return this;
+        //   }
+        // }
+
+        // // Exemplo de uso num sketch p5:
+        // const sketch = (p) => {
+        //   let pos, vel, wallNormal;
+
+        //   p.setup = () => {
+        //     p.createCanvas(400, 400);
+        //     pos = new CollidableVector(100, 200);
+        //     vel = new CollidableVector(2, 1.5);
+        //     // Exemplo: parede vertical (normal apontando para a direita)
+        //     wallNormal = new p5.Vector(1, 0);
+        //   };
+
+        //   p.draw = () => {
+        //     p.background(220);
+
+        //     // Move o ponto
+        //     pos.add(vel);
+
+        //     // Colisão simples com parede nas bordas
+        //     if (pos.x < 0 || pos.x > p.width) {
+        //       vel.reflect(wallNormal);
+        //     }
+
+        //     // Desenha
+        //     p.ellipse(pos.x, pos.y, 20, 20);
+        //   };
+        // };
+
+        // new p5(sketch);
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Ordenação e Busca</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    input, select, button, textarea { margin: .5rem 0; padding: .3rem; }
+    pre { background: #f0f0f0; padding: 1rem; white-space: pre-wrap; }
+    #input-object { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Ordenação e Busca</h1>
+
+  <!-- Escolha do modo -->
+  <label>
+    Tipo de dado:
+    <select id="tipo">
+      <option value="string">Strings (nomes)</option>
+      <option value="object">Objetos (usuários)</option>
+    </select>
+  </label>
+
+  <!-- Input para strings -->
+  <div id="input-string">
+    <p>Lista de nomes (vírgula-separados):</p>
+    <input type="text" id="listaStrings"
+           value="Carlos,Ana,Bruno,Érika,Daniel" size="50"/>
+  </div>
+
+  <!-- Input para objetos -->
+  <div id="input-object">
+    <p>Lista de usuários (JSON):</p>
+    <textarea id="listaObjetos" rows="5" cols="50">
+[
+  {"nome":"Carlos","email":"carlos@ex.com","passado":"rock"},
+  {"nome":"Ana","email":"ana@ex.com","passado":"jazz"},
+  {"nome":"Bruno","email":"bruno@ex.com","passado":"blues"}
+]
+    </textarea>
+    <p>
+      Ordenar/Buscar por campo:
+      <input type="text" id="campoObjeto" value="nome" />
+    </p>
+  </div>
+
+  <!-- Botões -->
+  <p>
+    <button id="btnSort">Ordenar</button>
+    <button id="btnSearch">Buscar</button>
+  </p>
+
+  <!-- Termo de busca -->
+  <div id="search-controls">
+    <label>
+      Valor a buscar:
+      <input type="text" id="valorBusca" placeholder="ex: Daniel ou jazz"/>
+    </label>
+  </div>
+
+  <h2>Resultado:</h2>
+  <pre id="resultado"></pre>
+
+  <!-- inclui o script abaixo -->
+  <script src="./ordenacao-e-busca-em-vetores.js"></script>
+</body>
+</html>

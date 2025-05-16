@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.min.js"></script>
+    <script>
+new p5((sketch) => {  // Cria uma nova instância do p5.js
+     // Arrays para armazenar as posições e velocidades das bolinhas
+    let posicoes = [];
+    let velocidades = [];
+    let numBolinhas = 5;  // Número de bolinhas no exemplo
+
+    sketch.setup = () => {
+        sketch.createCanvas(640, 480).parent('vetores');
+
+        // Inicializa posições e velocidades usando arrays
+        for (let i = 0; i < numBolinhas; i++) {
+            // Adiciona uma posição inicial aleatória ao array posicoes
+            posicoes.push(sketch.createVector(
+                sketch.random(30,z sketch.width - 30),
+                sketch.random(30, sketch.height - 30)
+            ));
+
+            // Adiciona uma velocidade inicial aleatória ao array velocidades
+            velocidades.push(sketch.createVector(
+                sketch.random(1, 3),
+                sketch.random(1, 3)
+            ));
+        }
+    };
+
+    sketch.draw = () => {
+        sketch.background(240);
+
+        // Percorre todos os elementos do array usando um loop
+        for (let i = 0; i < numBolinhas; i++) {
+            
+            // Atualiza posição da bolinha somando o vetor velocidade
+            posicoes[i].add(velocidades[i]);
+
+            // Verifica colisão horizontal com as bordas e inverte a direção se necessário
+            if (posicoes[i].x > sketch.width || posicoes[i].x < 0) {
+                velocidades[i].x *= -1;
+            }
+
+            // Verifica colisão vertical com as bordas e inverte a direção se necessário
+            if (posicoes[i].y > sketch.height || posicoes[i].y < 0) {
+                velocidades[i].y *= -1;
+            }
+
+    </script>
+</body>
+</html>
